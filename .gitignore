@@ -133,6 +133,9 @@ publish/
 # Configuration files directory
 files/
 
+# Keys directory
+crypto/
+
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml

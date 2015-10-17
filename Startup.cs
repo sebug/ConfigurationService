@@ -7,6 +7,8 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 
+using ConfigurationService.Repositories;
+
 namespace ConfigurationService
 {
     public class Startup
@@ -20,6 +22,9 @@ namespace ConfigurationService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+	    var config =
+		new FileConfigurationRepository("files");
+	    services.AddInstance<IConfigurationRepository>(config);
         }
 
         // Configure is called after ConfigureServices is called.
