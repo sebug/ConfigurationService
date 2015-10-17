@@ -25,6 +25,7 @@ namespace ConfigurationService
 	    var config =
 		new FileConfigurationRepository("files");
 	    services.AddInstance<IConfigurationRepository>(config);
+	    services.AddLogging();
         }
 
         // Configure is called after ConfigureServices is called.

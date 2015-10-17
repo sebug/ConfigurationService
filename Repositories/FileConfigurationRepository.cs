@@ -27,7 +27,8 @@ namespace ConfigurationService.Repositories
 	public IEnumerable<string> GetApplicationCodes()
 	{
 	    this.EnsureBaseDirectory();
-	    return Enumerable.Empty<string>();
+	    return Directory.EnumerateFiles(this._baseDirectory, "*.json")
+		.Select(Path.GetFileNameWithoutExtension);
 	}
     }
 }
