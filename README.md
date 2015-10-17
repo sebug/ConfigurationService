@@ -6,6 +6,7 @@ To get started, create some files in the directory files, for example MySuperApp
 by going to http://localhost:5000/api/configuration which lists the application codes.
 
 The files have to contain a JSON object of key-value pairs:
+
      {
         "property1": "value1",
         "property2": "value2"
