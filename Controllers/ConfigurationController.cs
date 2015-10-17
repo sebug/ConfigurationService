@@ -24,9 +24,11 @@ namespace ConfigurationService.Controllers
 	    this._logger = logger;
 	    this._authenticationService = authenticationService;
 	}
-	
+
+	[HttpGet]
 	public IEnumerable<string> Get()
 	{
+	    Console.WriteLine("Getting");
 	    return this._configurationRepository.GetApplicationCodes();
 	}
 

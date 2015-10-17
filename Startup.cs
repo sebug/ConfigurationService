@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
@@ -29,9 +30,9 @@ namespace ConfigurationService
 
 	    services.AddLogging();
 
-	    services.AddTransient<IAuthenticationService>(
-							  p => new FileAuthenticationService("crypto", p.GetService<ILogger<FileAuthenticationService>>())
-);
+	    services.AddDataProtection();
+
+	    services.AddTransient<IAuthenticationService, AuthenticationService>();
         }
 
         // Configure is called after ConfigureServices is called.
