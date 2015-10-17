@@ -6,5 +6,7 @@ namespace ConfigurationService.Repositories
     public interface IConfigurationRepository
     {
 	IEnumerable<string> GetApplicationCodes();
+
+	IDictionary<string, string> GetByApplicationCode(string applicationCode);
     }
 }

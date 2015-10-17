@@ -24,15 +24,16 @@ namespace ConfigurationService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-	    var config =
-		new FileConfigurationRepository("files");
-	    services.AddInstance<IConfigurationRepository>(config);
+
+	    services.AddTransient<IConfigurationRepository>(p => new FileConfigurationRepository("files", p.GetService<ILogger<FileConfigurationRepository>>()));
+							    
 
 	    services.AddLogging();
 
 	    services.AddDataProtection();
 
 	    services.AddTransient<IAuthenticationService, AuthenticationService>();
+	    services.AddTransient<IKeyGeneratorService, AuthenticationService>();
         }
 
         // Configure is called after ConfigureServices is called.

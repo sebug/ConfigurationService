@@ -50,7 +50,7 @@ namespace ConfigurationService.Controllers
 		this.LogCredentialError(applicationCode, key);
 		return new Dictionary<string, string>();
 	    }
-	    return new Dictionary<string, string>();
+	    return this._configurationRepository.GetByApplicationCode(applicationCode);
 	}
     }
 }
