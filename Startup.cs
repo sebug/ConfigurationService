@@ -8,6 +8,7 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 
 using ConfigurationService.Repositories;
+using ConfigurationService.Services;
 
 namespace ConfigurationService
 {
@@ -25,7 +26,12 @@ namespace ConfigurationService
 	    var config =
 		new FileConfigurationRepository("files");
 	    services.AddInstance<IConfigurationRepository>(config);
+
 	    services.AddLogging();
+
+	    services.AddTransient<IAuthenticationService>(
+							  p => new FileAuthenticationService("crypto", p.GetService<ILogger<FileAuthenticationService>>())
+);
         }
 
         // Configure is called after ConfigureServices is called.
